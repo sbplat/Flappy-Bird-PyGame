@@ -41,56 +41,56 @@ pygame.init()  # Initialize pygame
 
 SIZE = (999, 592)  # 1.6875 x 1 (scale)
 screen = pygame.display.set_mode(SIZE)  # Set the screen to that size
-pygame.display.set_icon(pygame.image.load("./assests/images/icon.png"))  # Icon
+pygame.display.set_icon(pygame.image.load("./assets/images/icon.png"))  # Icon
 pygame.display.set_caption("Flappy Bird")  # Caption
 
 Clock = pygame.time.Clock()  # Setup the clock
 
 # Loading the images
-get_ready_image = pygame.image.load("./assests/images/message.png").convert_alpha()
-result_image = pygame.image.load("./assests/images/result.png").convert_alpha()
+get_ready_image = pygame.image.load("./assets/images/message.png").convert_alpha()
+result_image = pygame.image.load("./assets/images/result.png").convert_alpha()
 thin_result_image = pygame.image.load(
-    "./assests/images/thin-result.png"
+    "./assets/images/thin-result.png"
 ).convert_alpha()
-gameover_image = pygame.image.load("./assests/images/gameover.png").convert_alpha()
-day_background = pygame.image.load("./assests/images/background-day.png").convert()
-night_background = pygame.image.load("./assests/images/background-night.png").convert()
-base = pygame.image.load("./assests/images/base.png").convert_alpha()
-pipe_green = pygame.image.load("./assests/images/pipe-green.png").convert_alpha()
-pipe_red = pygame.image.load("./assests/images/pipe-red.png").convert_alpha()
-garbage = pygame.image.load("./assests/images/garbage.png").convert_alpha()
-retry_image = pygame.image.load("./assests/images/retry.png").convert()
-resume_image = pygame.image.load("./assests/images/resume.png").convert()
-help_image = pygame.image.load("./assests/images/help.png").convert()
+gameover_image = pygame.image.load("./assets/images/gameover.png").convert_alpha()
+day_background = pygame.image.load("./assets/images/background-day.png").convert()
+night_background = pygame.image.load("./assets/images/background-night.png").convert()
+base = pygame.image.load("./assets/images/base.png").convert_alpha()
+pipe_green = pygame.image.load("./assets/images/pipe-green.png").convert_alpha()
+pipe_red = pygame.image.load("./assets/images/pipe-red.png").convert_alpha()
+garbage = pygame.image.load("./assets/images/garbage.png").convert_alpha()
+retry_image = pygame.image.load("./assets/images/retry.png").convert()
+resume_image = pygame.image.load("./assets/images/resume.png").convert()
+help_image = pygame.image.load("./assets/images/help.png").convert()
 
 bluebird_downflap = pygame.image.load(
-    "./assests/images/bluebird-downflap.png"
+    "./assets/images/bluebird-downflap.png"
 ).convert_alpha()
 bluebird_midflap = pygame.image.load(
-    "./assests/images/bluebird-midflap.png"
+    "./assets/images/bluebird-midflap.png"
 ).convert_alpha()
 bluebird_upflap = pygame.image.load(
-    "./assests/images/bluebird-upflap.png"
+    "./assets/images/bluebird-upflap.png"
 ).convert_alpha()
 
 redbird_downflap = pygame.image.load(
-    "./assests/images/redbird-downflap.png"
+    "./assets/images/redbird-downflap.png"
 ).convert_alpha()
 redbird_midflap = pygame.image.load(
-    "./assests/images/redbird-midflap.png"
+    "./assets/images/redbird-midflap.png"
 ).convert_alpha()
 redbird_upflap = pygame.image.load(
-    "./assests/images/redbird-upflap.png"
+    "./assets/images/redbird-upflap.png"
 ).convert_alpha()
 
 yellowbird_downflap = pygame.image.load(
-    "./assests/images/yellowbird-downflap.png"
+    "./assets/images/yellowbird-downflap.png"
 ).convert_alpha()
 yellowbird_midflap = pygame.image.load(
-    "./assests/images/yellowbird-midflap.png"
+    "./assets/images/yellowbird-midflap.png"
 ).convert_alpha()
 yellowbird_upflap = pygame.image.load(
-    "./assests/images/yellowbird-upflap.png"
+    "./assets/images/yellowbird-upflap.png"
 ).convert_alpha()
 
 # Transforming the images to the screen size
@@ -272,20 +272,20 @@ def draw_bird(surface, birds, birdX, birdY, bird_frame, rotation, animate, bird_
     )  # Returns bird_rect, bird_frame and bird_image
 
 
-def draw_pipes(surface, pipes, pipe_assests):
+def draw_pipes(surface, pipes, pipe_assets):
     """
     Draws the pipes.
 
     Args:
         surface(pygame.display): The screen to draw the bird on
         pipes(list): A list containing the pipe rects
-        pipe_assests(list): A list containing the pipe images images (rotated and non-rotated)
+        pipe_assets(list): A list containing the pipe images images (rotated and non-rotated)
 
     Returns:
         None
     """
-    pipe = pipe_assests[0]  # Get the pipe from index 0
-    pipe_flipped = pipe_assests[1]  # Get the flipped pipe from index 1
+    pipe = pipe_assets[0]  # Get the pipe from index 0
+    pipe_flipped = pipe_assets[1]  # Get the flipped pipe from index 1
 
     for pipe_info in pipes:  # Loops through all the pipe sets (up and down pipes)
         pipe_set = pipe_info[0]  # Set the pipe_set to the first index of the list
@@ -300,18 +300,18 @@ def draw_pipes(surface, pipes, pipe_assests):
         )  # Blit the flipped_pipe using the top_pipe_rect onto the screen
 
 
-def create_pipes(pipes, pipe_assests):
+def create_pipes(pipes, pipe_assets):
     """
     Creates the pipes. Generates them randomly and appends them to the pipe list.
 
     Args:
         pipes(list): A list containing the pipe rects
-        pipe_assests(list): A list containing the pipe images images (rotated and non-rotated)
+        pipe_assets(list): A list containing the pipe images images (rotated and non-rotated)
 
     Returns:
         pipes(list): A list containing the pipe rects
     """
-    pipe = pipe_assests[0]  # Get the first index of the list
+    pipe = pipe_assets[0]  # Get the first index of the list
     pipe_height = random.randint(400, SIZE[1] - 100)  # Generate a random pipe height
     pipeX = SIZE[0] + 50  # Pipe x coordinate
 
@@ -569,7 +569,7 @@ def draw_score(surface, bird_player_score, start_time):
     Returns:
         None
     """
-    font = get_font("./assests/fonts/04B_19__.ttf", 60)  # Get the 04B_19__ font
+    font = get_font("./assets/fonts/04B_19__.ttf", 60)  # Get the 04B_19__ font
 
     draw_text(
         surface, font, WHITE, str(bird_player_score), 80, 50
@@ -592,7 +592,7 @@ def get_highscore(score):
     Returns:
         highscore(int): The all time highscore of this game
     """
-    with open("./assests/data/highscore.txt", "r") as file:  # Open the file
+    with open("./assets/data/highscore.txt", "r") as file:  # Open the file
         lines = []  # Defines the lines list
 
         while True:  # Forever loop
@@ -633,7 +633,7 @@ def save_highscore(highscore):
     Returns:
         None
     """
-    with open("./assests/data/highscore.txt", "w") as file:  # Open the file
+    with open("./assets/data/highscore.txt", "w") as file:  # Open the file
         file.write(
             str(highscore)
         )  # Write the highscore to the file and erases everything else
@@ -649,9 +649,9 @@ def blit_help(surface):
     Returns:
         None
     """
-    flappy_font_path = "./assests/fonts/FlappyBirdy.ttf"  # Defines the path to the font
+    flappy_font_path = "./assets/fonts/FlappyBirdy.ttf"  # Defines the path to the font
 
-    num_font_path = "./assests/fonts/04B_19__.ttf"  # Defines the path to the font
+    num_font_path = "./assets/fonts/04B_19__.ttf"  # Defines the path to the font
 
     new_result_image = pygame.transform.scale(
         result_image, SIZE
@@ -816,7 +816,7 @@ def blit_paused(surface):
     Returns:
         None
     """
-    flappy_font_path = "./assests/fonts/FlappyBirdy.ttf"  # Defines the path to the font
+    flappy_font_path = "./assets/fonts/FlappyBirdy.ttf"  # Defines the path to the font
 
     thin_result_image_rect = thin_result_image.get_rect()  # Get the image rect
     thin_result_image_rect.center = (
@@ -861,9 +861,9 @@ def blit_dead(surface, score, highscore):
     Returns:
         None
     """
-    flappy_font_path = "./assests/fonts/FlappyBirdy.ttf"  # Defines the path to the font
+    flappy_font_path = "./assets/fonts/FlappyBirdy.ttf"  # Defines the path to the font
 
-    num_font_path = "./assests/fonts/04B_19__.ttf"  # Defines the path to the font
+    num_font_path = "./assets/fonts/04B_19__.ttf"  # Defines the path to the font
 
     result_image_rect = result_image.get_rect()  # Get the image rect
     result_image_rect.center = (
@@ -956,7 +956,7 @@ def draw_game(is_day):
     pygame.time.set_timer(ANIMATE_BIRD, 50)  # Set the animate bird event timer
 
     pipes = []  # Defines the pipe list
-    pipe_assests = random.choice(
+    pipe_assets = random.choice(
         [[pipe_green, pipe_green_flipped], [pipe_red, pipe_red_flipped]]
     )  # Random pipe colour list
     CREATE_PIPE = pygame.USEREVENT + 2  # Create pipe event
@@ -1108,7 +1108,7 @@ def draw_game(is_day):
                 if (not paused) and (
                     not dead
                 ):  # Not currently paused and player not dead
-                    pipes = create_pipes(pipes, pipe_assests)  # Create a pipe
+                    pipes = create_pipes(pipes, pipe_assets)  # Create a pipe
 
         if paused:  # Currrently paused
             blit_paused(screen)  # Blit the paused screen
@@ -1138,7 +1138,7 @@ def draw_game(is_day):
         pipes = move_pipes_back(pipes)  # Move the pipes backwards
         pipes = remove_pipes(pipes)  # Remove the pipes that are out of the screen
         pipes = move_pipe_vertically(pipes, up, down)  # Move the pipes vertically
-        draw_pipes(screen, pipes, pipe_assests)  # Draw the pipes
+        draw_pipes(screen, pipes, pipe_assets)  # Draw the pipes
         garbages = add_items(garbages)  # Add a item/garbage
         garbages = move_items_back(garbages)  # Move the items/garbages back
         garbages = remove_items(
